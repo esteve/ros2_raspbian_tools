@@ -1,0 +1,2 @@
+pyparted
+requests

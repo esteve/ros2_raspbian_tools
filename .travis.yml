@@ -1,0 +1,13 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker pull esteve/debian_raspbian_stretch
+
+script:
+- docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock esteve/debian_raspbian_stretch sh /build_java.sh
