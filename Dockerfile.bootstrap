@@ -18,7 +18,7 @@ RUN apt install -y --no-install-recommends \
     software-properties-common
 ENV RASPBERRYPI_CROSS_COMPILE_TOOLCHAIN_PATH /usr/bin
 ENV RASPBERRYPI_CROSS_COMPILE_TOOLCHAIN_PREFIX arm-linux-gnueabihf
-ENV RASPBERRYPI_CROSS_COMPILE_SYSROOT /ros2_ws/raspbian_ros2_root/
+ENV RASPBERRYPI_CROSS_COMPILE_SYSROOT /raspbian_ros2_root/
 ENV CC /usr/bin/arm-linux-gnueabihf-gcc
 ENV CXX /usr/bin/arm-linux-gnueabihf-g++
 ENV LANG C.UTF-8

@@ -2,6 +2,8 @@
 
 set -euf -o pipefail
 
+apt update
+
 apt -y --no-install-recommends install dirmngr
 
 echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -cs` main" | tee /etc/apt/sources.list.d/ros-latest.list

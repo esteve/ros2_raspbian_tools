@@ -103,6 +103,8 @@ def generate_tarball(root_partition_image, force=False):
 
         cmd = ['sudo', 'umount', container_directory]
         subprocess.call(cmd, stderr=subprocess.DEVNULL)
+
+        os.rmdir(container_directory)
     return tarball_filename
 
 
@@ -129,9 +131,10 @@ def check_docker_tag(docker_repository, docker_tag):
     docker_image_url = 'https://hub.docker.com/v2/repositories/{}/tags/{}/'.format(
         docker_repository, docker_tag)
     r = requests.get(docker_image_url)
-    json_response = r.json()
-    return 'detail' not in json_response
-
+    if r.ok:
+        json_response = r.json()
+        return 'detail' not in json_response
+    return False
 
 def resolve_raspbian_url(raspbian_url):
     r = requests.get(raspbian_url, stream=True)
@@ -164,7 +167,7 @@ def main(docker_repository,
 
         full_tag = '{}-{}-{}'.format(flavor, version, timestamp)
 
-        if check_tag and check_docker_tag(docker_repository, full_tag):
+        if upload and check_tag and check_docker_tag(docker_repository, full_tag):
             print(
                 'Docker image {0}:{1} already exists in Dockerhub: https://hub.docker.com/r/{0}/tags/'.
                 format(docker_repository, full_tag))
@@ -209,7 +212,7 @@ if __name__ == '__main__':
         '-n',
         '--no-check',
         action='store_false',
-        help='Do not check if the tag exists on Dockerhub')
+        help='Do not check if the tag exists on Dockerhub before uploading')
     parser.add_argument('-i', '--image', help='Use given image instead of fetching a Raspbian one')
     parser.add_argument(
         '-f',
