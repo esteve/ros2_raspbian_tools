@@ -1,5 +1,5 @@
 FROM debian:stretch
-RUN apt update && apt -y upgrade
+RUN apt update
 RUN apt install -y --no-install-recommends \
     apt-transport-https \
     ca-certificates \
