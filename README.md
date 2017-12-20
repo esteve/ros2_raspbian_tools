@@ -9,7 +9,7 @@ We'll be using `python3-vcstool` to retrieve the ROS2 source code. On a Debian/U
 just install it and the rest of the dependencies with the following:
 
 ```sh
-$ sudo apt install wget git python3-vcstool
+$ sudo apt install wget git python3-vcstool qemu-user-static
 ```
 
 Now that we have the required dependencies for fetching the ROS2 source code, we can now create a ROS2
