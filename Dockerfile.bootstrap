@@ -1,5 +1,5 @@
 FROM debian:stretch
-RUN apt update
+RUN apt update && apt -y upgrade
 RUN apt install -y --no-install-recommends \
     apt-transport-https \
     ca-certificates \
@@ -14,6 +14,7 @@ RUN apt install -y --no-install-recommends \
     python3-empy \
     python3-pkg-resources \
     python3-setuptools \
+    python3-pyparsing \
     qemu-user-static \
     software-properties-common
 ENV RASPBERRYPI_CROSS_COMPILE_TOOLCHAIN_PATH /usr/bin

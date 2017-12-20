@@ -7,7 +7,7 @@ apt update
 apt -y --no-install-recommends install dirmngr
 
 echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -cs` main" | tee /etc/apt/sources.list.d/ros-latest.list
-apt-key adv --keyserver ha.pool.sks-keyservers.net --recv-keys 421C365BD9FF1F717815A3895523BAEEB01FA116
+apt-key adv --keyserver pgp.mit.edu --recv-keys 421C365BD9FF1F717815A3895523BAEEB01FA116
 
 apt update
 apt -y install git wget
