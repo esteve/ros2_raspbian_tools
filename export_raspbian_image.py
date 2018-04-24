@@ -20,7 +20,7 @@ def main(docker_repository, script_file, tarball):
     
     try:
         cmd = [
-            'docker', 'container', 'run', '-it', '--name', container_name, '-v',
+            'docker', 'container', 'run', '-i', '--name', container_name, '-v',
             '{}:{}:ro'.format(qemu_arm_static_path, qemu_arm_static_path), '-v',
             '{}:/{}:ro'.format(script_file_abspath, script_file_basename), docker_repository, 'bash',
             '/{}'.format(script_file_basename)
